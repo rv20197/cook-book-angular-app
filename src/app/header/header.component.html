@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light bg-gradient">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Cook Book</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLinkActive="active text-primary"
+              routerLink="/auth"
+              *ngIf="!isAuthenticated"
+              >Authenticate</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLinkActive="active text-primary"
+              routerLink="/recipes"
+              *ngIf="isAuthenticated"
+              >Recipes</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLinkActive="active text-primary"
+              routerLink="/shopping-list"
+              *ngIf="isAuthenticated"
+              >Shopping List</a
+            >
+          </li>
+        </ul>
+      </ul>
+    </div>
+    <div class="nav-item dropdown" id="navbarNavDropdown" appDropdownDirective>
+      <a style="cursor: pointer" class="btn" (click)="logout()" role="button" *ngIf="isAuthenticated">Log-Out</a>
+
+      <a
+        class="btn dropdown-toggle"
+        id="navbarScrollingDropdown"
+        role="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+        *ngIf="isAuthenticated"
+      >
+        Manage
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+        <li>
+          <a
+            class="dropdown-item"
+            style="cursor: pointer"
+            (click)="saveRecipes()"
+            >Save</a
+          >
+        </li>
+        <li>
+          <a
+            class="dropdown-item"
+            style="cursor: pointer"
+            (click)="getRecipes()"
+            >View</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
